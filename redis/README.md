@@ -9,10 +9,17 @@ oc login -u developer -p developer
 ## Use the `oc` CLI, to create new instance of PostgreSQL:
  * [Deployment](https://github.com/VectorStream/vector-stream/tree/main/components/vector-databases/redis)
 ```bash
-oc create -f components/vector-databases/redis/base/namespace.yaml
-oc apply -k components/vector-databases/redis/operators/overlays/default
-oc get pods -n redis-rag
-oc apply -k components/vector-databases/redis/instance/overlays/default
+$ oc create -f components/vector-databases/redis/base/namespace.yaml
+$ oc apply -k https://github.com/VectorStream/vector-stream/components/vector-databases/redis/operators/overlays/default
+$ oc get pods -n redis-rag -w                                                             03:47:53 PM
+NAME                                        READY   STATUS    RESTARTS   AGE
+rec-0                                       2/2     Running   0          2m38s
+rec-1                                       2/2     Running   0          2m1s
+rec-2                                       2/2     Running   0          63s
+redis-enterprise-operator-9c9c4b89b-5fbrv   2/2     Running   0          2m43s
+$ oc apply -k https://github.com/VectorStream/vector-stream/components/vector-databases/redis/instance/overlays/default
+$ oc get svc redb-rag-instance  -n redis-rag # redb-rag-instance.redis-rag.svc.cluster.local  and the exposed port Use this service name for the notebooks
+$ oc get secret redb-redb-rag-instance -n redis-rag -o jsonpath='{.data.password}' | base64 -d # Use this password for the notebooks
 ```
 
 ## [Creating an index and populating it with documents using PostgreSQL+pgvector](Langchain-PgVector-Ingest.ipynb)
