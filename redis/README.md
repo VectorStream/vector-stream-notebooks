@@ -9,7 +9,7 @@ oc login -u developer -p developer
 ## Use the `oc` CLI, to create new instance of PostgreSQL:
  * [Deployment](https://github.com/VectorStream/vector-stream/tree/main/components/vector-databases/redis)
 ```bash
-$ oc create -f components/vector-databases/redis/base/namespace.yaml
+$ oc create -f https://raw.githubusercontent.com/VectorStream/vector-stream/refs/heads/main/components/vector-databases/redis/operators/base/namespace.yaml
 $ oc apply -k https://github.com/VectorStream/vector-stream/components/vector-databases/redis/operators/overlays/default
 $ oc get pods -n redis-rag -w                                                             03:47:53 PM
 NAME                                        READY   STATUS    RESTARTS   AGE
