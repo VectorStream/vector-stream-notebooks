@@ -1,5 +1,8 @@
 # Redis
 
+## Access notebook folder in JupyterHub
+`path: vector-stream-notebooks/redis`
+![20241115082429](https://i.imgur.com/Vl5IvC2.png)
 ## To Deploy on Openshift:
 
 ```bash

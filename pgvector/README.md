@@ -1,5 +1,9 @@
 # PostgreSQL + pgvector
 
+## Access notebook folder in JupyterHub
+`path: vector-stream-notebooks/pgvector`
+![20241115082520](https://i.imgur.com/uaCbTDc.png)
+
 ## To Deploy on Openshift:
 
 ```bash
